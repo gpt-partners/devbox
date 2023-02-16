@@ -5,4 +5,4 @@
 
 ## How to use
 
-``curl ``
+``curl https://raw.githubusercontent.com/gpt-partners/dotfiles/main/.vimrc > ~/.vimrc``
