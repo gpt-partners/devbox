@@ -5,4 +5,4 @@
 
 ## How to use
 
-``curl https://raw.githubusercontent.com/gpt-partners/dotfiles/main/.vimrc > ~/.vimrc``
+``bash <(curl -s https://raw.githubusercontent.com/gpt-partners/dotfiles/main/install.sh)``
