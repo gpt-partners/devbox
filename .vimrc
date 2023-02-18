@@ -3,7 +3,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
-Plug 'chriskempson/tomorrow-theme'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim'}
 call plug#end()
 set termguicolors
 set tabstop=2
