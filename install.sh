@@ -17,5 +17,5 @@ echo "alias v=nvim" >> ~/.zshrc;
 zsh;
 source ~/.zshrc;
 
-# Install pyvim
-python3 -m pip install pyvim
+# Install requirements for vim and ChatGPT plugin
+python3 -m pip install pyvim dotenv
