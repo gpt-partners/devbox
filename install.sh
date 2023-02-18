@@ -16,3 +16,6 @@ echo "export TERM=xterm-color" >> ~/.zshrc;
 echo "alias v=nvim" >> ~/.zshrc;
 zsh;
 source ~/.zshrc;
+
+# Install pyvim
+python3 -m pip install pyvim
