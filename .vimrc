@@ -5,13 +5,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'chriskempson/tomorrow-theme'
 call plug#end()
-syntax on
 set termguicolors
 set tabstop=2
 set shiftwidth=2
 set expandtab
-filetype plugin on
-filetype plugin indent on
 let mapleader = ","
 nnoremap <Leader>m :b#<CR>
 nnoremap <Leader>n :tabnext<CR>
