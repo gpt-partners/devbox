@@ -1,4 +1,5 @@
 #!/bin/bash
+# Made for Debian
 # Install vim
 apt-get update;
 apt-get install -y neovim;
@@ -11,6 +12,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/gpt-partners/dotfiles/main/.vimrc;
 
 # Enable colors
-echo "export TERM=xterm-color" >> ~/.bashrc;
-echo "alias v=nvim" >> ~/.bashrc;
-source ~/.bashrc;
+echo "export TERM=xterm-color" >> ~/.zshrc;
+echo "alias v=nvim" >> ~/.zshrc;
+source ~/.zshrc;
