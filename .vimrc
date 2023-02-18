@@ -1,7 +1,6 @@
 call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
-Plug 'terror/chatgpt.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'chriskempson/tomorrow-theme'
