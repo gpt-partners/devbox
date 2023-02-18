@@ -17,7 +17,7 @@ let mapleader = ","
 nnoremap <Leader>m :b#<CR>
 nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>, :w<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>q! :q<CR>
 nnoremap <Leader>. :CtrlP<CR>
 nnoremap <Leader>b :ls<CR>:b<Space>
 nnoremap <leader>q :q<cr>
