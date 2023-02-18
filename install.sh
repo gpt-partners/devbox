@@ -11,4 +11,4 @@ curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/
 
 # Enable colors
 echo "export TERM=xterm-color" ~/.bashrc
-echo "alias v=nvim"
+echo "alias v=nvim" > ~/.bashrc
