@@ -20,7 +20,7 @@ echo "alias v=nvim" >> ~/.zshrc
 
 # Install ChatGPT
 python3 -m pip install revChatGPT
-echo "alias g=\"python3 -m revChatGPT.V1\"" >> ~/.zshrc
+echo "alias gpt=\"python3 -m revChatGPT.V1\"" >> ~/.zshrc
 
 # Source .zshrc
 zsh
