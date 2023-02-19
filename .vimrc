@@ -13,7 +13,7 @@ set expandtab
 let mapleader = ","
 set shell=zsh
 nnoremap <Leader>m :b#<CR>
-nnoremap <Leader>n :tabnext<CR>
+nnoremap <Leader>- :tabnext<CR>
 nnoremap <Leader>, :w<CR>
 nnoremap <Leader>q! :q<CR>
 nnoremap <Leader>. :CtrlP<CR>
