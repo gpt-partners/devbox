@@ -11,6 +11,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 let mapleader = ","
+set shell=zsh
 nnoremap <Leader>m :b#<CR>
 nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>, :w<CR>
