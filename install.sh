@@ -17,9 +17,11 @@ curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/
 # Enable colors
 echo "export TERM=xterm-color" >> ~/.zshrc
 echo "alias v=nvim" >> ~/.zshrc
-zsh
-source ~/.zshrc
 
 # Install ChatGPT
 python3 -m pip install revChatGPT
-echo "alias gpt=python3 -m revChatGPT.V1" >> ~/.zshrc
+echo "alias g=\"python3 -m revChatGPT.V1\"" >> ~/.zshrc
+
+# Source .zshrc
+zsh
+source ~/.zshrc
