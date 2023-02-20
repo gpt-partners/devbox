@@ -23,6 +23,7 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>p :bprevious<CR>
 nnoremap <leader>n :bNext<CR>
 nnoremap <leader>d :bdelete<CR>
+nnoremap <leader>p :PlugInstall<CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 tnoremap <Esc> <C-\><C-n>
