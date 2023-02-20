@@ -6,6 +6,7 @@ Plug 'bling/vim-bufferline'
 Plug 'chriskempson/tomorrow-theme', {'dir': '~/.config/nvim/colors', 'rtp': 'vim'}
 call plug#end()
 colorscheme Tomorrow-Night-Bright
+set mouse=a
 set termguicolors
 set tabstop=2
 set shiftwidth=2
