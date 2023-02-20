@@ -4,6 +4,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'chriskempson/tomorrow-theme', {'dir': '~/.config/nvim/colors', 'rtp': 'vim'}
+Plug 'mattn/emmet-vim'
 call plug#end()
 colorscheme Tomorrow-Night-Bright
 set mouse=a
