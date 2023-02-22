@@ -3,8 +3,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'chriskempson/tomorrow-theme', {'dir': '~/.config/nvim/colors', 'rtp': 'vim'}
 Plug 'preservim/nerdtree'
+Plug 'metakirby5/codi.vim'
+Plug 'folke/todo-comments.nvim'
 "Plug 'mattn/emmet-vim'
 call plug#end()
 colorscheme Tomorrow-Night-Bright
@@ -15,6 +20,10 @@ set shiftwidth=2
 set expandtab
 let mapleader = ","
 set shell=zsh
+lua << EOF
+require("bufferline").setup{}
+require('lualine').setup()
+EOF
 nnoremap <Leader>m :b#<CR>
 nnoremap <Leader>f :tabnext<CR>
 nnoremap <Leader>g :tabnew<CR>
