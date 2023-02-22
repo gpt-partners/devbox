@@ -20,7 +20,7 @@ nnoremap <Leader>f :tabnext<CR>
 nnoremap <Leader>g :tabnew<CR>
 nnoremap <Leader>, :w<CR>
 nnoremap <Leader>q! :q<CR>
-nnoremap <Leader>s :NERDTree<CR>
+nnoremap <Leader>s :NERDTreeToggle<CR>
 nnoremap <Leader>a :e ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>. :CtrlP<CR>
 nnoremap <Leader>b :ls<CR>:b<Space>
