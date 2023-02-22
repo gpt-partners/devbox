@@ -4,6 +4,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'chriskempson/tomorrow-theme', {'dir': '~/.config/nvim/colors', 'rtp': 'vim'}
+Plug 'preservim/nerdtree'
 #Plug 'mattn/emmet-vim'
 call plug#end()
 colorscheme Tomorrow-Night-Bright
@@ -19,6 +20,8 @@ nnoremap <Leader>f :tabnext<CR>
 nnoremap <Leader>g :tabnew<CR>
 nnoremap <Leader>, :w<CR>
 nnoremap <Leader>q! :q<CR>
+nnoremap <Leader>s :NERDTree<CR>
+nnoremap <Leader>a :e ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>. :CtrlP<CR>
 nnoremap <Leader>b :ls<CR>:b<Space>
 nnoremap <leader>q :q<cr>
