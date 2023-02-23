@@ -21,10 +21,6 @@ let mapleader = ","
 set shell=zsh
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='light'
-lua << EOF
-require("bufferline").setup{}
-require('lualine').setup()
-EOF
 nnoremap <Leader>m :b#<CR>
 nnoremap <Leader>f :tabnext<CR>
 nnoremap <Leader>g :tabnew<CR>
@@ -42,3 +38,6 @@ nnoremap <leader>p :PlugInstall<CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 tnoremap <Esc> <C-\><C-n>
+lua << EOF
+require("bufferline").setup{}
+EOF
