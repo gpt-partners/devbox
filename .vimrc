@@ -1,7 +1,9 @@
 call plug#begin()
 Plug 'tpope/vim-fugitive'
-Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'kien/ctrlp.vim'
+
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
@@ -19,6 +21,9 @@ set shiftwidth=2
 set expandtab
 let mapleader = ","
 set shell=zsh
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='light'
 lua << EOF
 require("bufferline").setup{}
 require('lualine').setup()
