@@ -3,10 +3,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/ctrlp.vim'
-
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim'
-Plug 'nvim-lualine/lualine.nvim'
 Plug 'chriskempson/tomorrow-theme', {'dir': '~/.config/nvim/colors', 'rtp': 'vim'}
 Plug 'preservim/nerdtree'
 Plug 'metakirby5/codi.vim'
@@ -21,7 +19,6 @@ set shiftwidth=2
 set expandtab
 let mapleader = ","
 set shell=zsh
-" Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='light'
 lua << EOF
