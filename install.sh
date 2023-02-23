@@ -3,9 +3,11 @@
 # Made for Debian #
 ###################
 
-# Install vim
+# Install neovim
 apt-get update
-apt-get install -y neovim
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
+apt install ./nvim-linux64.deb
+rm nvim-linux64.deb
 
 # Install vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
