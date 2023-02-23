@@ -1,10 +1,7 @@
 call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/ctrlp.vim'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'akinsho/bufferline.nvim'
 Plug 'chriskempson/tomorrow-theme', {'dir': '~/.config/nvim/colors', 'rtp': 'vim'}
 Plug 'preservim/nerdtree'
 Plug 'metakirby5/codi.vim'
@@ -19,8 +16,6 @@ set shiftwidth=2
 set expandtab
 let mapleader = ","
 set shell=zsh
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='light'
 nnoremap <Leader>m :b#<CR>
 nnoremap <Leader>f :tabnext<CR>
 nnoremap <Leader>g :tabnew<CR>
@@ -38,6 +33,3 @@ nnoremap <leader>p :PlugInstall<CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 tnoremap <Esc> <C-\><C-n>
-lua << EOF
-require("bufferline").setup{}
-EOF
