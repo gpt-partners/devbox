@@ -19,7 +19,8 @@ set termguicolors
 set tabstop=2
 set shiftwidth=2
 set expandtab
-let mapleader = ","
+let mapleader=","
+let AirlineTheme=light
 set shell=zsh
 nnoremap <Leader>m :b#<CR>
 nnoremap <Leader>f :tabnext<CR>
