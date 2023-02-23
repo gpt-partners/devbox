@@ -1,6 +1,8 @@
 call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'akinsho/bufferline.nvim'
 Plug 'kien/ctrlp.vim'
 Plug 'chriskempson/tomorrow-theme', {'dir': '~/.config/nvim/colors', 'rtp': 'vim'}
 Plug 'preservim/nerdtree'
@@ -9,6 +11,9 @@ Plug 'folke/todo-comments.nvim'
 "Plug 'mattn/emmet-vim'
 call plug#end()
 colorscheme Tomorrow-Night-Bright
+lua require"bufferline".setup({
+  seperator_style = "table"
+})
 set mouse=a
 set termguicolors
 set tabstop=2
