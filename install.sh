@@ -27,3 +27,6 @@ echo "alias gpt=\"python3 -m revChatGPT.V1\"" >> ~/.zshrc
 # Source .zshrc
 zsh
 source ~/.zshrc
+
+# Configure .gitconfig
+echo "[user]\n\temail = your_email@example.com124867543+gpt-partners@users.noreply.github.com" >> ~/.gitconfig
