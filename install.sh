@@ -29,4 +29,4 @@ zsh
 source ~/.zshrc
 
 # Configure .gitconfig
-echo "[user]\n\temail = your_email@example.com124867543+gpt-partners@users.noreply.github.com" >> ~/.gitconfig
+echo "[user]\n\temail = 124867543+gpt-partners@users.noreply.github.com" >> ~/.gitconfig
