@@ -20,9 +20,8 @@ curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/
 echo "export TERM=xterm-color" >> ~/.zshrc
 echo "alias v=nvim" >> ~/.zshrc
 
-# Install ChatGPT
-python3 -m pip install revChatGPT
-echo "alias gpt=\"python3 -m revChatGPT.V1\"" >> ~/.zshrc
+# Install ripgrep
+apt-get install ripgrep
 
 # Source .zshrc
 zsh
