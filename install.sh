@@ -23,9 +23,10 @@ echo "alias v=nvim" >> ~/.zshrc
 # Install ripgrep
 apt-get install ripgrep
 
-# Source .zshrc
-zsh
-source ~/.zshrc
 
 # Configure .gitconfig
-echo "[user]\n\temail = 124867543+gpt-partners@users.noreply.github.com" >> ~/.gitconfig
+echo -e "[user]\n\temail = 124867543+gpt-partners@users.noreply.github.com" >> ~/.gitconfig
+
+# Install zsh
+apt-get install -y zsh git
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
