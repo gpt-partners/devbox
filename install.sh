@@ -12,11 +12,11 @@ rm nvim-linux64.tar.gz
 mv nvim-linux64 /opt
 
 # Install Python
-apt install -y software-properties-common
-add-apt-repository -y ppa:deadsnakes/ppa
+apt install software-properties-common -y
+add-apt-repository ppa:deadsnakes/ppa -y
 apt update
-apt remove -y python3.10 
-DEBIAN_FRONTEND=noninteractive apt install -y python3.12 python3-pip
+DEBIAN_FRONTEND=noninteractive apt install python3.12 python3-pip -y
+apt remove python3.10 -y
 pip install pynvim
 
 # Install Node.js
@@ -48,5 +48,5 @@ echo -e "[user]\n\temail = 124867543+gpt-partners@users.noreply.github.com" >> ~
 
 # Install zsh
 apt-get install -y zsh git
+echo -e "export PATH=/opt/nvim-linux64/bin:$PATH" >> /root/.zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo -e "export PATH=/opt/nvim-linux64/bin:$PATH" >> ~/.zshrc
