@@ -10,7 +10,6 @@ wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.
 tar xvfz nvim-linux64.tar.gz
 rm nvim-linux64.tar.gz
 mv nvim-linux64 /opt
-echo -e "export PATH=/opt/nvim-linux64/bin:$PATH" >> ~/.zshrc
 
 # Install Python
 #apt install -y software-properties-common
@@ -21,13 +20,13 @@ DEBIAN_FRONTEND=noninteractive apt install -y python3.12 python3-pip
 pip install pynvim
 
 # Install Node.js
-sudo apt-get install -y ca-certificates curl gnupg
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+apt-get install -y ca-certificates curl gnupg
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 NODE_MAJOR=20
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-sudo apt-get update
-sudo apt-get install nodejs -y
+apt update
+apt install nodejs -y
 npm i -g prettier neovim
 
 # Install vim-plug
@@ -50,3 +49,4 @@ echo -e "[user]\n\temail = 124867543+gpt-partners@users.noreply.github.com" >> ~
 # Install zsh
 apt-get install -y zsh git
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo -e "export PATH=/opt/nvim-linux64/bin:$PATH" >> ~/.zshrc
