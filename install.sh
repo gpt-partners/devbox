@@ -12,11 +12,7 @@ rm nvim-linux64.tar.gz
 mv nvim-linux64 /opt
 
 # Install Python
-apt install software-properties-common -y
-add-apt-repository ppa:deadsnakes/ppa -y
-apt update
-DEBIAN_FRONTEND=noninteractive apt install python3.12 python3-pip -y
-apt remove python3.10 -y
+apt install python3 python3-pip -y
 pip install pynvim
 
 # Install Node.js
