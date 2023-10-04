@@ -73,3 +73,8 @@ augroup fmt
 augroup END
 " Setup CtrlP
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" Configure autopairs
+lua << EOF
+require("nvim-autopairs").setup {}
+EOF
