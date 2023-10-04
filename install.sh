@@ -11,6 +11,15 @@ tar xvfz nvim-linux64.tar.gz
 rm nvim-linux64.tar.gz
 mv nvim-linux64 /opt
 ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin
+
+# Install vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+# Copy .vimrc
+curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/gpt-partners/dotfiles/main/.vimrc
+
+# Install plugins
 nvim +PlugInstall +qall >/dev/null
 
 # Install Python
@@ -27,13 +36,6 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 apt update
 apt install nodejs -y
 npm i -g prettier neovim
-
-# Install vim-plug
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-# Copy .vimrc
-curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/gpt-partners/dotfiles/main/.vimrc
 
 # Install ripgrep
 apt-get install ripgrep
