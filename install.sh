@@ -1,6 +1,6 @@
 #!/bin/bash
 ###################
-# Made for Debian #
+# Made for Ubuntu #
 ###################
 
 # Install neovim
@@ -10,10 +10,12 @@ wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.
 tar xvfz nvim-linux64.tar.gz
 rm nvim-linux64.tar.gz
 mv nvim-linux64 /opt
+ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin
 
 # Install Python
 apt install python3 python3-pip -y
 pip install pynvim
+ln -s /usr/bin/python3 /usr/local/bin/python
 
 # Install Node.js
 apt-get install -y ca-certificates curl gnupg
@@ -31,10 +33,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # Copy .vimrc
 curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/gpt-partners/dotfiles/main/.vimrc
-
-# Enable colors
-echo "export TERM=xterm-color" >> ~/.zshrc
-echo -e "alias v=nvim" >> ~/.zshrc
 
 # Install ripgrep
 apt-get install ripgrep
