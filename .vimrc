@@ -15,14 +15,16 @@ Plug 'yaegassy/coc-tailwindcss3'
 Plug 'windwp/nvim-autopairs'
 call plug#end()
 colorscheme Tomorrow-Night-Bright
-lua require"bufferline".setup({seperator_style = "table"})
+lua << EOF
+require("bufferline").setup{}
+EOF
 set mouse=a
 set termguicolors
 set tabstop=2
 set shiftwidth=2
 set expandtab
 let mapleader=","
-let AirlineTheme=light
+let AirlineTheme='light'
 set shell=zsh
 nnoremap <Leader>m :b#<CR>
 nnoremap <Leader>f :tabnext<CR>
