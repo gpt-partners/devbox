@@ -19,9 +19,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # Copy .vimrc
 curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/gpt-partners/dotfiles/main/.vimrc
 
-# Install plugins
-nvim +PlugInstall +qall >/dev/null
-
 # Install Python
 apt install python3 python3-pip -y
 pip install pynvim
