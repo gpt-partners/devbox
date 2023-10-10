@@ -1,0 +1,5 @@
+{
+  "ruff.autoFixOnSave": true,
+  "ruff.enableExperimentalFormatter": true,
+  "coc.preferences.formatOnSave": true
+}
