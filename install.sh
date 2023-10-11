@@ -14,7 +14,7 @@ ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin
 
 # Install ctags
 wget https://github.com/universal-ctags/ctags-nightly-build/releases/download/2023.09.29%2B0aa6d047ffd78c3baff508a53f4a176d97a28b5b/uctags-2023.09.29-linux-x86_64.tar.xz
-tar xvfz uctags-2023.09.29-linux-x86_64.tar.xz
+tar xf uctags-2023.09.29-linux-x86_64.tar.xz
 rm uctags-2023.09.29-linux-x86_64.tar.xz
 mv uctags-2023.09.29-linux-x86_64 /opt
 ln -s /opt/uctags-2023.09.29-linux-x86_64/bin/ctags /usr/local/bin
