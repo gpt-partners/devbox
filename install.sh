@@ -23,10 +23,10 @@ ln -s /opt/uctags-2023.09.29-linux-x86_64/bin/ctags /usr/local/bin
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-# Copy .vimrc and coc-settings.json
+# Copy .vimrc, coc-settings.json and tmux.conf
 curl -o ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/gpt-partners/dotfiles/main/.vimrc
 curl -o ~/.config/nvim/coc-settings.json https://raw.githubusercontent.com/gpt-partners/dotfiles/main/coc-settings.json
-
+curl -o ~/.tmux.conf https://raw.githubusercontent.com/gpt-partners/dotfiles/main/tmux.conf
 
 # Install Python
 apt install python3 python3-pip -y
