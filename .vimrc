@@ -1,25 +1,44 @@
 call plug#begin()
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kien/ctrlp.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'folke/neodev.nvim'
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-jest'
+Plug 'nvim-telescope/telescope.nvim', {'branch': 'master'}
 Plug 'preservim/nerdtree'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sbdchd/neoformat'
 Plug 'preservim/nerdcommenter'
 Plug 'yaegassy/coc-tailwindcss3'
-Plug 'windwp/nvim-autopairs'
 Plug 'jremmen/vim-ripgrep'
 Plug 'yaegassy/coc-ruff', {'do': 'yarn install --frozen-lockfile'}
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/tagbar'
+Plug 'ruanyl/vim-sort-imports'
+Plug 'mattn/emmet-vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'mxsdev/nvim-dap-vscode-js'
+Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'LiadOz/nvim-dap-repl-highlights'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'David-Kunz/jester'
+Plug 'navarasu/onedark.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'jay-babu/mason-nvim-dap.nvim'
 call plug#end()
-" lua require"bufferline".setup()
-lua require("nvim-autopairs").setup {}
+set clipboard=unnamedplus
 set tags=./tags,tags;/
-set statusline+=%{gutentags#statusline()}
 set mouse=a
 set termguicolors
 set tabstop=2
@@ -27,9 +46,9 @@ set shiftwidth=2
 set expandtab
 let mapleader=","
 set shell=zsh
-set number
+colorscheme onedark
 nnoremap <Leader>m :b#<CR>
-nnoremap <leader>x :NERDTreeToggle<CR>
+nnoremap <leader>x :bufdo bd<CR>
 nnoremap <Leader>f :tabnext<CR>
 nnoremap <Leader>g :tabnew<CR>
 nnoremap <Leader>, :w<CR>
@@ -37,34 +56,118 @@ nnoremap <Leader>q! :q<CR>
 nnoremap <Leader>t :terminal<CR>
 nnoremap <Leader>s :NERDTreeToggle<CR>
 nnoremap <Leader>a :e ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>. :CtrlP<CR>
-nnoremap <Leader>.. :CtrlPClearAllCaches<CR>
-nnoremap <Leader>b :ls<CR>:b<Space>
+nnoremap <Leader>e :lua require"jester".debug_file()<CR>
+nnoremap <Leader>. :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>
+nnoremap <Leader>l :lua require'telescope.builtin'.live_grep(require('telescope.themes').get_dropdown({}))<cr>
+nnoremap <Leader>u :lua require("dapui").toggle()<CR>
+nnoremap <Leader>nt :lua require("neotest").run.run({strategy = "dap"})<CR>
+nnoremap <Leader>nx :lua require("neotest").run.run()<CR>
+nnoremap <Leader>na :lua require("neotest").run.attach()<CR>
+nnoremap <Leader>b :Telescope buffers<CR>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>p :bprevious<CR>
 nnoremap <leader>n :bNext<CR>
 nnoremap <leader>d :bdelete<CR>
 nnoremap <leader>dcu :!docker-compose up -d<CR>
+nnoremap <leader>dcb :!docker-compose up -d --build<CR>
 nnoremap <leader>dcd :!docker-compose down<CR>
 nnoremap <leader>dcl :!docker-compose logs -f<CR>
 nnoremap <leader>cl :set colorcolumn=80<CR>
 nnoremap <leader>ucl :set colorcolumn=0<CR>
+nnoremap <leader>nnn :set nonumber<CR>
+nnoremap <leader>nn :set number<CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <leader>pp :%!npx prettier --plugin=prettier-plugin-tailwindcss %<CR>
-nmap <F8> :TagbarToggle<CR>
+nmap <F10> :TagbarToggle<CR>
 tnoremap <Esc> <C-\><C-n>
 
-" Coc.nvim setup
+" Setup nvim-dap
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F9> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F6> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F7> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <F8> :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <F2> :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <F4> :lua require'dap'.run_last()<CR>
+
+au FileType dap-repl lua require('dap.ext.autocompl').attach()
+" Setup lua-line, mason and blankline
+lua << END
+require('lualine').setup()
+require("ibl").setup()
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-nvim-dap").setup()
+require("neodev").setup({})
+require("neotest").setup({
+  adapters = {
+    require('neotest-jest')({
+      jestCommand = "npx jest --watch ",
+    }),
+  }
+})
+END
+
+" Setup Dap and Dap-Vscode-JS
+lua << EOF
+vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+  require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+  require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
+end)
+
+require("dap-vscode-js").setup({
+  node_path = "/root/.nvm/versions/node/v20.9.0/bin/node",
+  debugger_path = "/root/vscode-js-debug",
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+})
+require('nvim-dap-repl-highlights').setup()
+for _, language in ipairs({ "typescript", "javascript" }) do
+  require("dap").configurations[language] = {
+    {
+      type = "pwa-node",
+      request = "launch",
+      name = "Launch file",
+      program = "${file}",
+      cwd = "${workspaceFolder}",
+    },
+    {
+      type = "pwa-node",
+      request = "attach",
+      name = "Attach",
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      address = "0.0.0.0",
+      port = 9229,
+      processId = require'dap.utils'.pick_process,
+      skipFiles = { "<node_internals>/**" },
+      continueOnAttach = true,
+    }
+  }
+end
+EOF
+" Setup telescope-dap
+lua << EOF
+require('telescope').load_extension('dap')
+EOF
+
+" Setup coc-ruff
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-" Run coc.runCommand on save
-autocmd BufWritePre *.py call CocActionAsync('runCommand', 'ruff.executeFormat')
-" autocmd BufWritePre * call CocAction('format')
 " Use <c-space> to trigger completion
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -90,9 +193,16 @@ nmap <leader>cl  <Plug>(coc-codelens-action)
 " GoTo defintion of symbol in current document
 nmap <leader>cd  <Plug>(coc-definition)
 
-" Setup CtrlP
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist\|build\|public\|vendor\|tmp\|log\|logs\|cache\|coverage\|\.git\|\.hg\|\.svn\|\.DS_Store\|\.gitignore\|\.gitmodules\|\.gitkeep\|\.hgignore\|\.hgsub\|\.hgsubstate\|\.svnignore\|.next\|.docusaurus'
-let g:ctrlp_show_hidden = 1
+" Setup Treesitter
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
 " CTASG Support for TypescriptReact
 let g:tagbar_type_typescriptreact = {
 \ 'ctagstype': 'typescript',
@@ -119,4 +229,4 @@ let g:tagbar_type_typescriptreact = {
   \ 'm' : 'method',
   \ 'p' : 'property',
   \},
-\ }
+\}
