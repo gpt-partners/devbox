@@ -2,7 +2,7 @@
 
 # Install dependencies
 apt update
-apt -y install python3 python3-pip python3-venv openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl gnupg xclip
+apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl gnupg xclip
 
 # Install oh-my-zsh and and configure .zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -15,7 +15,8 @@ n lts
 
 # Install pyenv
 curl https://pyenv.run | bash
-echo -e "PYENV_ROOT=\"$HOME/.pyenv\"\n[[ -d $PYENV_ROOT/bin ]] && export PATH=\"$PYENV_ROOT/bin:$PATH\"\neval \"$(pyenv init -)\"
+echo -e "PYENV_ROOT=\"$HOME/.pyenv\"\n[[ -d $PYENV_ROOT/bin ]] && export PATH=\"$PYENV_ROOT/bin:$PATH\"\neval \"$(pyenv init -)\""
+source ~/.zshrc && pyenv install 3.12
 
 # Install neovim plugins
 npm install -g neovim pyright
