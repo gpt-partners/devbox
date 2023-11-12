@@ -61,3 +61,6 @@ locale-gen en_IN.UTF-8
 # Configure .gitconfig
 echo -e "[user]\n\temail = 124867543+gpt-partners@users.noreply.github.com" >> ~/.gitconfig
 echo -e "\n\n[alias]\n  pom = push origin master\n  pomf = push origin master --force\n  pu = pull origin master\n  aa = add ." >> ~/.gitconfig
+
+# Add Docker context
+docker context create my-host --docker "host=unix:///var/run/docker.sock"
