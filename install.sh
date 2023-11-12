@@ -10,7 +10,7 @@ echo -e "alias v=nvim\nalias t=\"tmux -u\"" >> ~/.zshrc
 
 # Install NodeJS
 curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts
-npm install -g n
+npm install -g n tree-sitter-cli
 n lts
 
 # Install neovim plugins
