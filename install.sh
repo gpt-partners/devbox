@@ -4,14 +4,18 @@
 apt update
 apt -y install python3 python3-pip python3-venv openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl gnupg xclip
 
-# Install oh-my-zsh
+# Install oh-my-zsh and and configure .zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo -e "alias v=nvim\nalias t=\"tmux -u\"" >> ~/.zshrc
+echo -e "alias vi=nvim\nalias t=\"tmux -u\"\nalias s=\"source .venv/bin/activate\"\nalias rc=\"cd /root/.config/nvim/lua/custom\"" >> ~/.zshrc
 
 # Install NodeJS
 curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts
 npm install -g n tree-sitter-cli
 n lts
+
+# Install pyenv
+curl https://pyenv.run | bash
+echo -e "PYENV_ROOT=\"$HOME/.pyenv\"\n[[ -d $PYENV_ROOT/bin ]] && export PATH=\"$PYENV_ROOT/bin:$PATH\"\neval \"$(pyenv init -)\"
 
 # Install neovim plugins
 npm install -g neovim pyright
@@ -55,3 +59,4 @@ locale-gen en_IN.UTF-8
 
 # Configure .gitconfig
 echo -e "[user]\n\temail = 124867543+gpt-partners@users.noreply.github.com" >> ~/.gitconfig
+echo -e "\n\n[alias]\n  pom = push origin master\n  pomf = push origin master --force\n  pu = pull origin master\n  aa = add ." >> ~/.gitconfig
