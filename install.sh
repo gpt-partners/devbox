@@ -22,15 +22,6 @@ source ~/.zshrc && pyenv install 3.12
 npm install -g neovim pyright
 pip install pynvim neovim
 
-# Download and install vscode-js-debug
-cd /root
-git clone https://github.com/microsoft/vscode-js-debug
-cd vscode-js-debug
-npm install --legacy-peer-deps
-npx gulp vsDebugServerBundle
-mv dist out
-cd /
-
 # Install neovim
 git clone --depth=1 https://github.com/neovim/neovim
 cd neovim
