@@ -6,7 +6,7 @@ apt -y install openssh-server build-essential ninja-build cmake gettext git ripg
 
 # Install oh-my-zsh and and configure .zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo -e "alias vi=nvim\nalias t=\"tmux -u\"\nalias s=\"source .venv/bin/activate\"\nalias rc=\"cd /root/.config/nvim/lua/custom\"" >> ~/.zshrc
+echo -e "alias v=nvim\nalias t=\"tmux -u\"\nalias s=\"source .venv/bin/activate\"\nalias rc=\"cd /root/.config/nvim/lua/custom\"" >> ~/.zshrc
 
 # Install NodeJS
 curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts
