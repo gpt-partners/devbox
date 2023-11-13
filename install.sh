@@ -21,10 +21,6 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
-# Install neovim plugins
-npm install -g neovim pyright
-pip install pynvim neovim
-
 # Install neovim
 git clone --depth=1 https://github.com/neovim/neovim
 cd neovim
@@ -46,7 +42,6 @@ sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_con
 chsh -s /usr/bin/zsh root
 echo 'root:root' | chpasswd
 chage -d 0 root
-
 
 # Fix UTF-8 support
 echo -e "export LC_ALL=en_IN.UTF-8\nexport LANG=en_IN.UTF-8" >> ~/.zshrc
