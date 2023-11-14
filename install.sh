@@ -34,7 +34,7 @@ cd .. && rm -r neovim
 # Install NvChad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 rm -rf $HOME/.config/nvim/.git
-git clone https://github.com/gpt-partners/nvim-config /root/.config/nvim/lua/custom
+git clone git@github.com:gpt-partners/nvim-config /root/.config/nvim/lua/custom
 nvim --headless +MasonInstallAll +qa
 
 # Install SSH server
