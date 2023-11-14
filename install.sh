@@ -6,7 +6,7 @@ apt -y install openssh-server build-essential ninja-build cmake gettext git ripg
 
 # Install oh-my-zsh and and configure .zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo -e "alias v=nvim\nalias t=\"tmux -u\"\nalias s=\"source .venv/bin/activate\"\nalias rc=\"cd /root/.config/nvim/lua/custom\"\nalias dc=\"docker container\"\nalias dcu=\"docker-compose up -d\"\nalias dcd=\"docker-compose down\"\nalias dcb=\"docker-compose up -d --build\"\nalias di=\"docker image\"\nalias dl=\"docker logs -f\"\nalias e=exit\nalias g=git\nalias p=\"python\"" >> ~/.zshrc
+echo -e "alias v=nvim\nalias t=\"tmux -u\"\nalias ta=\"tmux a\"\nalias s=\"source .venv/bin/activate\"\nalias rc=\"cd /root/.config/nvim/lua/custom\"\nalias dc=\"docker container\"\nalias dcu=\"docker-compose up -d\"\nalias dcd=\"docker-compose down\"\nalias dcb=\"docker-compose up -d --build\"\nalias di=\"docker image\"\nalias dl=\"docker logs -f\"\nalias e=exit\nalias g=git\nalias p=\"python\"" >> ~/.zshrc
 
 # Install NodeJS
 curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts
