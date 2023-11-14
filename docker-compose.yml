@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devbox
+    ports:
+      - "23:22"
+    volumes:
+      - ~/src:/root/src
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
