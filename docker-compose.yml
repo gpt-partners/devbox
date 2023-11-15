@@ -1,12 +1,13 @@
 version: "3.8"
 
 services:
-  backend:
+  neovim:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: devbox
     ports:
+      - "4200:4200"
       - "23:22"
     volumes:
       - ~/src:/root/src

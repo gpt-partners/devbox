@@ -1,0 +1,11 @@
+[user]
+	email = 124867543+gpt-partners@users.noreply.github.com
+
+
+[alias]
+  pom = push origin master
+  pomf = push origin master --force
+  pu = pull origin master
+  aa = add .
+  st = status
+  co = commit

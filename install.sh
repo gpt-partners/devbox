@@ -2,7 +2,8 @@
 
 # Install dependencies
 apt update
-apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl gnupg xclip
+apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl gnupg xclip shellinabox
+
 
 # Install oh-my-zsh and and configure .zshrc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -28,6 +29,10 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 cd /root/.pyenv/ && python -m venv debugpy
 /root/.pyenv/debugpy/bin/python -m pip install debugpy
 
+# Install debugpy
+mkdir -p /root/.venv/ && cd /root/.venv && python -m venv debugpy
+/root/.venv/debugpy/bin/python -m pip install debugpy
+
 # Install neovim
 git clone --depth=1 https://github.com/neovim/neovim
 cd neovim
@@ -39,7 +44,8 @@ cd .. && rm -r neovim
 # Install NvChad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 rm -rf $HOME/.config/nvim/.git
-git clone git@github.com:gpt-partners/nvim-config /root/.config/nvim/lua/custom
+git clone http://github.com/gpt-partners/nvim-config /root/.config/nvim/lua/custom
+sed -i 's|https://github.com/|git@github.com:|g' /root/.config/nvim/lua/custom/.git/config
 nvim --headless +MasonInstallAll +qa
 
 # Install SSH server
