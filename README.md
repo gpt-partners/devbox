@@ -16,7 +16,6 @@ From terminal:
 Or as Docker container:
 
 ```
-docker build -t devbox --no-cache .
 docker-compose up -d --build
 ssh -p 23 root@devbox
 ```
