@@ -23,6 +23,10 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
+# Install debugpy
+mkdir -p /root/.venv/ && cd /root/.venv && python -m venv debugpy
+/root/.venv/debugpy/bin/python -m pip install debugpy
+
 # Install neovim
 git clone --depth=1 https://github.com/neovim/neovim
 cd neovim
