@@ -2,7 +2,7 @@
 
 # Install dependencies
 apt update
-apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl gnupg xclip shellinabox
+apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl gnupg xclip
 
 
 # Install oh-my-zsh and and configure .zshrc

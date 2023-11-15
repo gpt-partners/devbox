@@ -12,10 +12,5 @@ RUN /install.sh
 RUN rm /install-docker.sh /install.sh
 
 EXPOSE 22
-EXPOSE 4200
 
-# Run as sshd
-#CMD ["/usr/sbin/sshd", "-D", "-e"]
-
-# Run as shellinabox
-CMD ["shellinaboxd", "-t", "-s", "/:LOGIN", "--disable-ssl", "--no-beep"]
+CMD ["/usr/sbin/sshd", "-D", "-e"]
