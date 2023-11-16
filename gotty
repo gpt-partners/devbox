@@ -1,4 +1,0 @@
-preferences {
-    font_family = "'Hack Nerd Font', 'Inconsolata Nerd Font', 'Source Code Pro'"
-    user_css = "https://fonts.googleapis.com/css?family=Source+Code+Pro"
-}

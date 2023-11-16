@@ -2,7 +2,7 @@
 
 # Install dependencies
 apt update
-DEBIAN_FRONTEND=noninteractive apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl wget gnupg xclip libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+DEBIAN_FRONTEND=noninteractive apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl wget gnupg xclip libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libjson-c-dev libwebsockets-dev
 
 # Install Docker Engine
 install -m 0755 -d /etc/apt/keyrings
@@ -50,8 +50,14 @@ sed -i 's|https://github.com/|git@github.com:|g' /root/.config/nvim/lua/custom/.
 nvim --headless +MasonInstallAll +qa
 
 # Install Gotty
-cd /tmp && wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_freebsd_arm.tar.gz
-tar -C /usr/local -xzf gotty_freebsd_arm.tar.gz
+cd /tmp && wget https://github.com/sorenisanerd/gotty/releases/download/v1.5.0/gotty_v1.5.0_linux_arm.tar.gz
+tar xvfz gotty_v1.5.0_linux_arm.tar.gz -C /usr/local/bin
+
+# Install ttyd
+cd /tmp && git clone https://github.com/tsl0922/ttyd.git
+cd ttyd && mkdir build && cd build
+cmake ..
+make && make install
 
 # Fix UTF-8 support
 locale-gen en_IN.UTF-8

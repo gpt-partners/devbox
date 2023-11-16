@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: gotty
+    container_name: ttyd
     ports:
       - "8080:8080"
     volumes:
