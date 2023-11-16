@@ -49,12 +49,16 @@ git clone http://github.com/gpt-partners/nvim-config /root/.config/nvim/lua/cust
 sed -i 's|https://github.com/|git@github.com:|g' /root/.config/nvim/lua/custom/.git/config
 nvim --headless +MasonInstallAll +qa
 
-# Install Gotty
-cd /tmp && wget https://github.com/sorenisanerd/gotty/releases/download/v1.5.0/gotty_v1.5.0_linux_arm.tar.gz
-tar xvfz gotty_v1.5.0_linux_arm.tar.gz -C /usr/local/bin
-
 # Install ttyd
 cd /tmp && git clone https://github.com/tsl0922/ttyd.git
+wget -P /tmp/hack https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
+unzip hack/Hack.zip -d /tmp/ttyd/html/src/style/
+echo "@font-face {
+  font-family: 'Hack Nerd Font Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: url(\"HackNerdFontMono-Regular.ttf\");
+}" >> /tmp/ttyd/html/src/style/index.scss
 cd ttyd && mkdir build && cd build
 cmake ..
 make && make install
