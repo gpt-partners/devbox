@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: devbox
+    container_name: gotty
     ports:
-      - "23:22"
+      - "8080:8080"
     volumes:
       - ~/src:/root/src
       - /var/run/docker.sock:/var/run/docker.sock

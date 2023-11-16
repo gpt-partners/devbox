@@ -2,12 +2,22 @@
 
 # Install dependencies
 apt update
-apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl gnupg xclip
+DEBIAN_FRONTEND=noninteractive apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl wget gnupg xclip libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
+# Install Docker Engine
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt-get -y update
 
-# Install oh-my-zsh and and configure .zshrc
+apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
+
+# Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-echo -e "alias v=nvim\nalias t=\"tmux -u\"\nalias ta=\"tmux a\"\nalias s=\"source .venv/bin/activate\"\nalias rc=\"cd /root/.config/nvim/lua/custom\"\nalias dc=\"docker container\"\nalias dcu=\"docker-compose up -d\"\nalias dcd=\"docker-compose down\"\nalias dcb=\"docker-compose up -d --build\"\nalias di=\"docker image\"\nalias dl=\"docker logs -f\"\nalias e=exit\nalias g=git\nalias p=\"python\"" >> ~/.zshrc
 
 # Install NodeJS
 curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts
@@ -15,19 +25,10 @@ npm install -g n tree-sitter-cli
 n lts
 
 # Install pyenv
-DEBIAN_FRONTEND=noninteractive apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 git clone https://github.com/pyenv/pyenv ~/.pyenv
-eval "$(/root/.pyenv/bin/pyenv init -)"
-/root/.pyenv/bin/pyenv install 3.12
-/root/.pyenv/bin/pyenv global 3.12
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+/root/.pyenv/bin/pyenv install 3.11
+/root/.pyenv/bin/pyenv global 3.11
 /root/.pyenv/shims/pip install --upgrade pip
-
-# Install debugpy
-cd /root/.pyenv/ && python -m venv debugpy
-/root/.pyenv/debugpy/bin/python -m pip install debugpy
 
 # Install debugpy
 mkdir -p /root/.venv/ && cd /root/.venv && python -m venv debugpy
@@ -48,25 +49,9 @@ git clone http://github.com/gpt-partners/nvim-config /root/.config/nvim/lua/cust
 sed -i 's|https://github.com/|git@github.com:|g' /root/.config/nvim/lua/custom/.git/config
 nvim --headless +MasonInstallAll +qa
 
-# Install ttyd
-apt-get install -y build-essential cmake git libjson-c-dev libwebsockets-dev
-cd /tmp && git clone https://github.com/tsl0922/ttyd.git
-cd ttyd && mkdir build && cd build
-cmake ..
-make && make install
-
-# Install SSH server
-mkdir /var/run/sshd
-sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
-chsh -s /usr/bin/zsh root
-echo 'root:root' | chpasswd
-chage -d 0 root
+# Install Gotty
+cd /tmp && wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_freebsd_arm.tar.gz
+tar -C /usr/local -xzf gotty_freebsd_arm.tar.gz
 
 # Fix UTF-8 support
-echo -e "export LC_ALL=en_IN.UTF-8\nexport LANG=en_IN.UTF-8" >> ~/.zshrc
 locale-gen en_IN.UTF-8
-
-# Configure .gitconfig
-echo -e "[user]\n\temail = 124867543+gpt-partners@users.noreply.github.com" >> ~/.gitconfig
-echo -e "\n\n[alias]\n  pom = push origin master\n  pomf = push origin master --force\n  pu = pull origin master\n  aa = add .\n  st = status\n  co = commit" >> ~/.gitconfig
