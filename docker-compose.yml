@@ -11,4 +11,5 @@ services:
     volumes:
       - ~/src:/root/src
       - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.ssh:/root/.ssh
     restart: always
