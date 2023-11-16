@@ -13,4 +13,5 @@ RUN rm /install-docker.sh /install.sh
 
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D", "-e"]
+#CMD ["/usr/sbin/sshd", "-D", "-e"]
+ENTRYPOINT ["/usr/local/bin/ttyd", "-p", "7681", "-W", "zsh"]

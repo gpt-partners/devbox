@@ -48,6 +48,13 @@ git clone http://github.com/gpt-partners/nvim-config /root/.config/nvim/lua/cust
 sed -i 's|https://github.com/|git@github.com:|g' /root/.config/nvim/lua/custom/.git/config
 nvim --headless +MasonInstallAll +qa
 
+# Install ttyd
+apt-get install -y build-essential cmake git libjson-c-dev libwebsockets-dev
+cd /tmp && git clone https://github.com/tsl0922/ttyd.git
+cd ttyd && mkdir build && cd build
+cmake ..
+make && make install
+
 # Install SSH server
 mkdir /var/run/sshd
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
