@@ -2,7 +2,7 @@
 
 # Install dependencies
 apt update
-DEBIAN_FRONTEND=noninteractive apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl wget gnupg xclip libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libjson-c-dev libwebsockets-dev
+DEBIAN_FRONTEND=noninteractive apt -y install openssh-server build-essential ninja-build cmake gettext git ripgrep fd-find unzip tmux zsh locales ca-certificates curl wget gnupg xclip libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libjson-c-dev libwebsockets-dev mosh
 
 # Install Docker Engine
 install -m 0755 -d /etc/apt/keyrings
@@ -62,3 +62,11 @@ make && make install
 
 # Fix UTF-8 support
 locale-gen en_IN.UTF-8
+
+# Install SSH
+mkdir /var/run/sshd
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+chsh -s /usr/bin/zsh root
+echo 'root:root' | chpasswd
+chage -d 0 root
