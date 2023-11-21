@@ -53,13 +53,8 @@ nvim --headless +MasonInstallAll +qa
 cd /tmp && git clone https://github.com/tsl0922/ttyd.git
 wget -P /tmp/hack https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
 unzip hack/Hack.zip -d /tmp/ttyd/html/src/style/fonts/
-echo "@font-face {
-    font-family: 'Hack Nerd Font Mono';
-    src: url('./fonts/HackNerdFontMono-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-}" >> /tmp/ttyd/html/src/style/index.scss
-
+cp /tmp/ttyd_cache/index.scss /tmp/ttyd/html/src/style/index.scss
+cp /tmp/ttyd_cache/webpack.config.js /tmp/ttyd/html/webpack.config.js
 cd /tmp/ttyd/html && yarn build
 cd /tmp/ttyd && mkdir build && cd build
 cmake ..
