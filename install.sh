@@ -55,8 +55,9 @@ wget -P /tmp/hack https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0
 unzip hack/Hack.zip -d /tmp/ttyd/html/src/style/fonts/
 cp /tmp/ttyd_cache/index.scss /tmp/ttyd/html/src/style/index.scss
 cp /tmp/ttyd_cache/webpack.config.js /tmp/ttyd/html/webpack.config.js
-cd /tmp/ttyd/html && yarn build
-cd /tmp/ttyd && mkdir build && cd build
+corepack enable
+cd /tmp/ttyd/html && yarn install && yarn build
+cd /tmp/ttyd && mkdir -p build && cd build
 cmake ..
 make && make install
 
