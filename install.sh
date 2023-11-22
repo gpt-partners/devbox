@@ -25,7 +25,7 @@ npm install -g n tree-sitter-cli
 n lts
 
 # Install pyenv
-git clone https://github.com/pyenv/pyenv ~/.pyenv
+git clone --depth=1 https://github.com/pyenv/pyenv ~/.pyenv
 /root/.pyenv/bin/pyenv install 3.11
 /root/.pyenv/bin/pyenv global 3.11
 /root/.pyenv/shims/pip install --upgrade pip
@@ -43,14 +43,14 @@ mv /neovim/build/bin/nvim /usr/bin/
 cd .. && rm -r neovim
 
 # Install NvChad
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+git clone --depth=1 https://github.com/NvChad/NvChad ~/.config/nvim
 rm -rf $HOME/.config/nvim/.git
-git clone http://github.com/gpt-partners/nvim-config /root/.config/nvim/lua/custom
+git clone git@github.com:gpt-partners/nvim-config /root/.config/nvim/lua/custom
 sed -i 's|https://github.com/|git@github.com:|g' /root/.config/nvim/lua/custom/.git/config
 nvim --headless +MasonInstallAll +qa
 
 # Install ttyd
-cd /tmp && git clone https://github.com/tsl0922/ttyd.git
+cd /tmp && git clone --depth=1 https://github.com/tsl0922/ttyd.git
 wget -P /tmp/hack https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
 unzip hack/Hack.zip -d /tmp/ttyd/html/src/style/fonts/
 cp /tmp/ttyd_cache/index.scss /tmp/ttyd/html/src/style/index.scss
