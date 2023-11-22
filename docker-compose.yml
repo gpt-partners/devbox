@@ -9,7 +9,6 @@ services:
     ports:
       - "8080:8080"
       - "23:22"
-      - "7681:7681"
     volumes:
       - ~/src:/root/src
       - /var/run/docker.sock:/var/run/docker.sock
