@@ -68,6 +68,7 @@ locale-gen en_IN.UTF-8
 mkdir /var/run/sshd
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+echo "Compression yes" >> /etc/ssh/sshd_config
 chsh -s /usr/bin/zsh root
 echo 'root:root' | chpasswd
 chage -d 0 root
