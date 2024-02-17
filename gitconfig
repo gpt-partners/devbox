@@ -9,3 +9,4 @@
   aa = add .
   st = status
   co = commit
+  cob = checkout -b
