@@ -7,6 +7,8 @@ alias t="tmux -u"
 alias ta="tmux a"
 alias e="exit"
 alias g="git"
+alias cv="python -m venv .venv"
+alias f="python -m pip freeze > requirements.txt"
 alias s="source .venv/bin/activate"
 alias rc="cd /root/.config/nvim/lua/custom"
 alias dc="docker container"
@@ -22,3 +24,4 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 export LC_ALL=en_IN.UTF-8
 export LANG=en_IN.UTF-8
+export TERM=screen-256color
