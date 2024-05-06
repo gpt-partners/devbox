@@ -26,8 +26,8 @@ n lts
 
 # Install pyenv
 git clone --depth=1 https://github.com/pyenv/pyenv ~/.pyenv
-/root/.pyenv/bin/pyenv install 3.11
-/root/.pyenv/bin/pyenv global 3.11
+/root/.pyenv/bin/pyenv install 3.12
+/root/.pyenv/bin/pyenv global 3.12
 /root/.pyenv/shims/pip install --upgrade pip
 
 # Install debugpy
